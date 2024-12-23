@@ -120,6 +120,14 @@
   transform: translateY(15px);
   opacity: 0;
   animation: FadeInUp 0.7s ease forwards;
+  overflow-x: auto; /* Enable horizontal scrolling for small screens */
+  
+  background-color: #ffffff; /* White background */
+  border: 1px solid #ddd;    /* Light border */
+  border-radius: 8px;        /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+  margin-bottom: 20px;       /* Space below */
+ 
 }
 
 .section-content.active {
@@ -191,6 +199,33 @@ textarea {
   flex: 0 0 calc(50% - 15px);
   max-width: calc(50% - 15px);
 }
+/* Medium button CSS */
+.btn {
+  display: inline-block;
+  font-size: 16px; /* Medium-sized text */
+  padding: 10px 20px; /* Medium padding */
+  border-radius: 5px; /* Rounded corners */
+  border: none; /* Remove border */
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Primary button styling */
+.btn-primary {
+  background-color: #007bff; /* Primary color (blue) */
+  color: white; /* Text color */
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn-primary:active {
+  background-color: #004085; /* Even darker blue on click */
+}
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
@@ -209,5 +244,116 @@ textarea {
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  background-color: #ffffff; /* White background for table */
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd; /* Light border for table cells */
+  font-size: 16px;
+  color: #333; /* Dark gray text color */
+}
+
+.table th {
+  background-color: #f8f9fa; /* Light gray background for table headers */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.table-container {
+  display: block;
+  overflow-x: auto; /* Enable horizontal scrolling for table */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile devices */
+  width: 100%; /* Ensure the container takes full width */
+}
+
+.table.table-bordered {
+  border: 1px solid #ddd;
+}
+
+.table.table-bordered th,
+.table.table-bordered td {
+  border: 1px solid #ddd;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    font-size: 14px; /* Smaller font for small screens */
+    padding: 8px;
+  }
+  .section-content {
+    padding: 15px; /* Reduce padding for smaller screens */
+  }
+
+  button {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .form-control {
+    font-size: 12px;
+    padding: 5px;
+  }
+  .container-fluid {
+    padding: 8px; /* Adjust padding for smaller screens */
+    margin: 8px auto; /* Reduce margin */
+    border-radius: 4px; /* Slightly smaller corner radius */
+  }
+}
+
+@media (max-width: 480px) {
+  .table th,
+  .table td {
+    font-size: 12px; /* Further reduce font size for extra small screens */
+    padding: 5px;    /* Reduce padding further */
+  }
+
+  .section-content {
+    padding: 10px; /* Adjust padding for extra small screens */
+  }
+}
+
+/* Additional table styling */
+.table th:first-child,
+.table td:first-child {
+  border-left: 0;
+}
+
+.table th:last-child,
+.table td:last-child {
+  border-right: 0;
+}
+
+/* Highlight active table row */
+.table tr:hover {
+  background-color: #f1f1f1; /* Light gray background on hover */
+  transition: background-color 0.3s ease;
+}
+
+@media (max-width: 576px) {
+  .container-fluid {
+    padding: 5px; /* Reduce padding further for compact view */
+    margin: 5px auto; /* Smaller margin */
+    border-radius: 3px; /* Even smaller corner radius */
+    background-color: #ffffff; /* Use white background for a cleaner look */
+  }
+}
+
+/* Responsive styles for extra small screens */
+@media (max-width: 360px) {
+  .container-fluid {
+    padding: 4px;
+    border: none; /* Remove border for very small screens */
+    box-shadow: none; /* Remove shadow for a flatter design */
+    background-color: #fefefe; /* Slightly lighter background color */
   }
 }

@@ -7,7 +7,7 @@
      
     </ul>
     <div id="line">
-      <div id="line-progress"></div>
+      <div id="line-progress" [style.width.%]="stepperComplitionValue"></div>
     </div>
     <!-- progress-bar-container -->
     <div id="progress-content-section">
@@ -29,10 +29,24 @@
              </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-2">
                <label>Designation :</label> 
-                <input type="text" [(ngModel)]="employeeObj.empDestiganationId"placeholder="Enter Designation" class="form-control">
+               <select class="form-select" [(ngModel)]="employeeObj.empDesignationId">
+                <option value="">Select Designation</option>
+                @for (item of designationList; track $index) {
+                    <option  [value]="item.designationId">{{item.designation}}</option>
+                }
+               </select>
             </div>
+            <div class="form-group col-md-2">
+                <label>Roles</label> 
+                <select class="form-select" [(ngModel)]="employeeObj.roleId">
+                 <option value="">Select Designation</option>
+                
+                     <option *ngFor="let item of roleList"  [value]="item.role">{{item.role}}</option>
+                 
+                </select>
+             </div>
             <div class="form-group col-md-6">
               <label>Contact No :</label>  
                 <input type="text" [(ngModel)]="employeeObj.empContactNo"placeholder="Enter Contact No" class="form-control">
@@ -103,8 +117,15 @@
                 <textarea placeholder="Enter Personal Address" class="form-control"></textarea>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 text-end">
+                <button class="btn btn-primary" (click)="gotoStep2()">Next</button>
+            </div>
+          </div>
         </div>
       </div>
+
+
       <div class="section-content step2 active" *ngIf="activeStep.stepName =='Skills'">
        
         <div class="container-fluid">
@@ -135,7 +156,7 @@
                                 </td>
                               
                                 <td class="btn-container">
-                                    <button class="btn btn-sm btn-success"><i class="fa fa-save"></i>
+                                    <button class="btn btn-container btn-success"><i class="fa fa-save"></i>
                                         Save</button>
                                    <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Delete</button>
                                 </td>
@@ -157,6 +178,11 @@
             </div>
         </div>
         </div>
+        <div class="row">
+            <div class="col-12 text-end">
+                <button class="btn btn-primary" (click)="gotoStep3()">Next</button>
+            </div>
+          </div>
       </div>
       <div class="section-content step3 active" *ngIf="activeStep.stepName == 'Experiences'">
         
@@ -219,6 +245,11 @@
            
         </div>
         </div>
+        <div class="row">
+            <div class="col-12 text-end">
+                <button class="btn btn-primary" (click)="saveEmployee()">Save Details</button>
+            </div>
+          </div>
       </div>
     </div>
   </div>
