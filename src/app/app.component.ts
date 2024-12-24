@@ -61,13 +61,27 @@ export class AppComponent implements OnInit{
 
 
   }
+
+  employeeList: any[]=[];
+  isCreateView: boolean= false;
   
   constructor(private http:HttpClient){
 
   }
   ngOnInit(): void {
-    this.loaDesignations();
+    this.loadDesignations();
     this.loadRoles();
+    this.loadAllEmployee();
+  }
+  onEdit(id:number){
+    this.http.get("https://freeapi.gerasim.in/api/EmployeeApp/GetEmployeeByEmployeeId?id=" +id).subscribe((res:any)=>{
+      this.employeeObj.data;
+      this.employeeObj.empId = id;
+      this.isCreateView = true;
+    })
+  }
+  addNew(){
+    this.isCreateView = true; 
   }
 
   setActiveStep(activeStep:any) {
@@ -108,7 +122,12 @@ gotoStep3(){
       }
       this.employeeObj.ermEmpExperiences.unshift(expObj)
     }
-    loaDesignations(){
+    loadAllEmployee(){
+      this.http.get("https://freeapi.gerasim.in/api/EmployeeApp/GetAllEmployee").subscribe((res:any)=>{
+        this.employeeList = res.data;
+      })
+    }
+    loadDesignations(){
       this.http.get("https://freeapi.gerasim.in/api/EmployeeApp/GetAllDesignation").subscribe((res:any)=>{
         this.designationList = res.data;
       })
@@ -118,11 +137,41 @@ gotoStep3(){
         this.roleList = res.data;
       })
     }
+
+  onDelete(id: number){
+    const isDelete = confirm("Are You sure want to delete");
+    if(isDelete){
+      this.http.delete("https://freeapi.gerasim.in/api/EmployeeApp/DeleteEmployeeByEmpId?empId="+id).subscribe((res:any)=>{
+        debugger;
+        if(res.result){
+          alert('Employee Delete Succesfully');
+          this.loadAllEmployee();
+        }else{
+          alert(res.message)
+        }
+      })
+    }
+  }
+
     saveEmployee(){
-      this.http.post("https://faux-api.com/api/v1/createnewemployee_30968866493735203",this.employeeObj).subscribe((res:any)=>{
+      this.http.post("https://freeapi.gerasim.in/api/EmployeeApp/CreateNewEmployee",this.employeeObj).subscribe((res:any)=>{
+        debugger;
+        if(res.result){
+          alert('Employee Create Succesfully');
+          this.loadAllEmployee();
+          this.isCreateView = false
+        }else{
+          alert(res.message)
+        }
+      })
+    }
+    updateEmployee(){
+      this.http.put("https://freeapi.gerasim.in/api/EmployeeApp/UpdateEmployee",this.employeeObj).subscribe((res:any)=>{
         debugger;
         if(res.result){
           alert('Employee Create Succesfully')
+          this.loadAllEmployee();
+          this.isCreateView = false
         }else{
           alert(res.message)
         }
