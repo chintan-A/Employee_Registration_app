@@ -1,3 +1,13 @@
+# Screen Shots
+<img width="944" alt="Screenshot 2024-12-24 002552" src="https://github.com/user-attachments/assets/54b51e5e-4a9a-45be-8e3b-aec74fd72d32" />
+
+<img width="964" alt="Screenshot 2024-12-24 002633" src="https://github.com/user-attachments/assets/740301a2-afb5-442e-ba31-2f6bf9dfedf9" />
+
+<img width="954" alt="Screenshot 2024-12-24 002716" src="https://github.com/user-attachments/assets/3302c8cc-4e46-41c3-97ff-81d8f3e5b553" />
+
+
+
+
 # Employeeapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
